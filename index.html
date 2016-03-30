@@ -7,9 +7,11 @@
 	
 		<!-- Mapbox js -->
 		<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.js'></script>
-
-		<!-- Mapbox stylesheet -->
 		<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.3/mapbox.css' rel='stylesheet' />
+
+		<!-- Mapbox web GL -->
+		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.js'></script>
+		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.15.0/mapbox-gl.css' rel='stylesheet' />
 
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -23,15 +25,13 @@
 		<!-- Latest compiled and minified Bootstrap -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-		<!-- Mapbox version of Leaflet Markercluster js -->
+		<!-- Mapbox version of Leaflet Markercluster -->
 		<script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
-
-		<!-- Mapbox version of Leaflet Markercluster CSS files -->
 		<link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
 		<link href='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 	
 		<!-- Stamen Tiles -->
-		<script src="http://maps.stamen.com/js/tile.stamen.js"></script>
+		<!--<script src="http://maps.stamen.com/js/tile.stamen.js"></script>-->
 	
 			<style>
 				html, body, #map {
@@ -109,12 +109,19 @@
 
 	<div id="map"></div>
 	<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiamVzc2licmVlbiIsImEiOiJGNnlGVkRrIn0.Ar8l7jFbPYG3SWR-DrTyNQ';
+	var baseLayer = new mapboxgl.Map({
+		//container: 'map', // container id
+		style: 'mapbox://styles/mapbox/streets-v8' //stylesheet location
+		/*center: [-74.50, 40], // starting position
+		zoom: 9 // starting zoom*/
+	});
 
 	// Add baselayer
-	var baseLayer = new L.StamenTileLayer("toner-lite");
+	// var baseLayer = new L.StamenTileLayer("toner-lite");
 
 	// Create Leaflet Control Object for Legend
-	var legend = L.control({position: 'topright'});
+	var legend = L.control({position: 'bottomright'});
 
 	// Function that runs when legend is added to map
 	legend.onAdd = function (map) {
